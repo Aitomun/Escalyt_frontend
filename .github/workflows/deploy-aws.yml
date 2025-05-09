@@ -1,0 +1,60 @@
+name: Deploy to S3/CloudFront
+
+on:
+ push:
+   branches:
+    - develop
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+ build:
+   name: Build
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup node
+      uses: actions/setup-node@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build static file
+      run: |
+        CI=false
+        npm run build
+    
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v3
+      with:
+        name: production-files
+        path: ./dist
+
+ deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+            name: production-files
+            path: ./dist
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            role-to-assume: ${{ secrets.MANAGED_INTERNSHIP_S3_ROLE }}
+            aws-region: us-east-1
+
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./dist s3://escalyt
+
+      - name: Invallidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id E28UTPEHIYJXLY --paths '/*'

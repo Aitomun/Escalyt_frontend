@@ -1,0 +1,130 @@
+/* src/Login.module.css */
+/* body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+} */
+
+
+.navbar_logo {
+    
+    height: 50px;
+}
+
+.login_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: white;
+}
+
+
+
+.login_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 448px;
+    height: 480px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 8px 8px -4px rgba(16, 24, 40, 0.04), 0 20px 24px -4px rgba(16, 24, 40, 0.1);
+}
+
+.login_icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.form_group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form_group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form_group input {
+    width: 100%;
+    border: 1px solid #0070FF;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.password_container {
+    position: relative;
+    width: 100%;
+}
+
+.password_container input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.password_toggle_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.forgot_password {
+    align-self: flex-end;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.error_message {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.login_button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.login_button:hover {
+    background-color: #0056b3;
+}
+
+.image_container {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .login_container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .image_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_box {
+        margin-right: 20px;
+    }
+}
+
+.required {
+    color: red;
+}

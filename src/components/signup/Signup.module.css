@@ -1,0 +1,347 @@
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+   body {
+    /* font-family: 'Inter', sans-serif; */
+    background-color: rgba(255, 255, 255, 1);
+    /* display: flex; */
+    /* min-height: 100vh; */
+    /* padding-top: 24px; */
+    /* padding-left: 24px; */
+    /* margin: 0; */
+  } 
+
+
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  } 
+  
+  .formContainer {
+    width: 100%;
+    max-width: 448px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 12px;
+    box-shadow: 0 8px 8px -4px rgba(16, 24, 40, 0.04), 0 20px 24px -4px rgba(16, 24, 40, 0.1);
+    padding: 24px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  } 
+  
+  .imageContainer {
+    display: none;
+  }
+  
+  .engineImage {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .logoContainer {
+    
+  }
+  
+  .logo {
+    width: 119px;
+    height: 32px;
+  } 
+  
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  } 
+  
+  .signupIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  } 
+  
+  .title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: rgba(16, 24, 40, 1);
+  } 
+  
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }a 
+  
+   .formSection {
+    margin-bottom: 12px;
+  } 
+ 
+  .signupLab {
+    display: block;
+    font-size: 16px;
+    /* font-weight: 500; */
+    line-height: 24px;
+    margin-bottom: px;
+    padding: 0px, 6px, 0px, 16px;
+  
+
+  } 
+  .signupLabel{
+    content: none;
+    display: block;
+    font-size: 16px;
+    /* font-weight: 500; */
+    line-height: 24px;
+    margin-bottom: 5px;
+    padding: 0px, 16px, 0px, 16px;
+  
+  }
+ 
+  .requiredSection {
+    color: red;
+    margin-left: 2px;
+  } 
+  
+ /* input {
+    width: 100%;
+    height: 48px; 
+    border: 1px solid #0070FF;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: rgb(67, 67, 82);
+   padding-left: 10px; 
+     padding-left: 4px; 
+  } */
+
+  .inputPadding {
+    /* padding-left: 10px; */
+    width: 100%;
+    height: 48px; 
+    border: 1px solid #0070FF;
+    /* font-size: 24px; */
+    font-weight: 600;
+    line-height: 24px;
+    color: rgb(67, 67, 82);
+    padding-left: 10px; 
+     padding-left: 4px; 
+  }
+  
+  
+  input::placeholder {
+    opacity: 0.5;
+    padding-left: 4px;
+    color: rgba(9, 16, 29, 1);
+    font-weight: 400;
+    font-size: 14px;
+
+  }
+  
+  .passwordContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .passwordToggle {
+    cursor: pointer;
+    margin-left: -30px;
+    opacity: 0.6;
+  }
+  
+  .confirmButton, .backButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #0070FF;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .confirm-button:hover, .back-button:hover {
+    background-color: #2563eb;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  /* Modal */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  }
+  
+  .modalError {
+    border: 1px solid red;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modalIcon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .closeButton img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  .modalBody {
+    text-align: left;
+  }
+  
+  .modalBody h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .modalBody p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .confirmButton {
+    padding: 10px 20px;
+    background-color: #0070FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .confirmButton:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Responsive Styles */
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      margin-left: 50px;
+    }
+  
+    .formContainer {
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  
+    .imageContainer {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      padding: 40px;
+    }
+  
+    .formContainer {
+      padding: 32px;
+    }
+  
+    .title {
+      font-size: 28px;
+    }
+  
+    .subtitle {
+      font-size: 18px;
+    }
+  
+    input {
+      font-size: 18px;
+    }
+  
+    .confirmButton, .back-button {
+      font-size: 18px;
+    }
+  }
+
+  /* Loading Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal.loading {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 200px;
+  }
+  
+  .modal.loading .modalBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal.loading .modalBody img {
+    width: 50px;
+    height: 5*0px;
+    margin-bottom: 10px;
+  }
+  
+  .modal.loading .modalBody p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+   /* label::after {
+    content: none;
+}   */

@@ -1,0 +1,31 @@
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.content{
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 400px;
+    position: relative;
+}
+.closeIcon{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.modalHeader{
+    font-weight: 500;
+    margin: 10px;
+}
+.modalParagraph{
+    margin: 10px;
+
+}
