@@ -3,9 +3,9 @@ import { VscAccount } from "react-icons/vsc";
 import { FaEllipsisV, FaBell } from 'react-icons/fa';
 import Escalyt from '../../assets/images/logo.png';
 import Bell from '../../assets/images/Bell.png'
+import { useNavigate } from 'react-router-dom';
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
-//const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYW1pZGVsZWdiZXRvbnlvbkBnbWFpbC5jb20iLCJpYXQiOjE3MjI3OTIxMDUsImV4cCI6MTcyMjk2NDkwNX0.7NTHOK1F5k2XlMAmHDSMFkKRKChbFimafD8JG18mYUI';
 
 
 const Usernavbar = ( ) => {
@@ -16,8 +16,14 @@ const Usernavbar = ( ) => {
   const [initials, setInitials] = useState("");
   const notificationsRef = useRef(null);
   const profileOptionsRef = useRef(null);
+  const navigate = useNavigate();
 
-  //const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYW1pZGVsZWdiZXRvbnlvbkBnbWFpbC5jb20iLCJpYXQiOjE3MjI3OTIxMDUsImV4cCI6MTcyMjk2NDkwNX0.7NTHOK1F5k2XlMAmHDSMFkKRKChbFimafD8JG18mYUI';
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  navigate('/login');
+};
+
+
    const token = localStorage.getItem('token'); // Replace with your method of retrieving the token
   if (!token) {
     throw new Error('No token found');
@@ -151,7 +157,7 @@ const Usernavbar = ( ) => {
                   <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Update Profile</button>
                   <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Notifications</button>
                   <button className="w-full text-left px-4 py-2 hover:bg-gray-100">My Tickets</button>
-                  <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
+                  <button  onClick={handleLogout}className="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
                 </div>
               )}
             </div>

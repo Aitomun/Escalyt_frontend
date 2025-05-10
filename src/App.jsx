@@ -50,7 +50,7 @@ function App() {
 
           <Route path='/admin/dashboard' element={<AdminHomeDashboard />} />
           <Route path="/adminticketsdashboard" element={<AdminTicketsDashboard />} />
-          <Route path="/email-confirmation-success" element={<EmailConfirmationPage />} />
+<Route path="/email-confirmation-success" element={<EmailConfirmationPage />} />
           <Route path="/email-confirmation-failure" element={<EmailConfirmationFailurePage />} />
           <Route path="/signed-out" element={<SignedOutPage />} />
           <Route path="/signed-out" element={withAuth(SignedOutPage)} />

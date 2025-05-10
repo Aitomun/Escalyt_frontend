@@ -21,6 +21,7 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Header from './AdminHeader';
 import { useNavigate } from 'react-router-dom';
+import CategoryForm from "../create_category/categoryForm"; // Import the CategoryForm component
 
 // Function to convert date to "time ago" format
 function timeAgo(dateString) {
@@ -49,6 +50,15 @@ function timeAgo(dateString) {
 }
 
 const AdminTicketsDashboard = () => {
+  const [showCategoryForm, setShowCategoryForm] = useState(false); // State to control form visibility
+
+  const handleCreateCategoryClick = () => {
+    setShowCategoryForm(true); // Show the CategoryForm when button is clicked
+  };
+
+  const handleCloseCategoryForm = () => {
+    setShowCategoryForm(false); // Hide the CategoryForm when modal is closed
+  };
   const [activities, setActivities] = useState([]);
   const [selected, setSelected] = useState([]);
   const [assignees, setAssignees] = useState([]);
@@ -323,7 +333,7 @@ const AdminTicketsDashboard = () => {
           <Typography variant="body1" sx={{ color: '#000' }}>
             Tickets({activities.length})
           </Typography>
-          <Button variant="contained" color="primary" onClick={handleFilter} sx={{ mt: 2, textTransform: 'none', mb: 2 }}>
+          <Button variant="contained" color="primary" onClick={handleCreateCategoryClick} sx={{ mt: 2, textTransform: 'none', mb: 2 }}>
             Create Category
           </Button>
           <TableContainer>
@@ -429,6 +439,31 @@ const AdminTicketsDashboard = () => {
           <Button fullWidth onClick={handleClose} sx={{ color: 'grey.700' }}>Delete</Button>
         </Box>
       </Popover>
+
+      {showCategoryForm && (
+  <div
+   style={{
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.25)', // transparent black
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: 1300
+}}
+
+    onClick={handleCloseCategoryForm}
+  >
+    <div onClick={(e) => e.stopPropagation()}>
+      <CategoryForm />
+    </div>
+  </div>
+)}
+
     </Container>
   );
 };

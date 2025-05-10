@@ -35,6 +35,8 @@ const Mytickets = () => {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [assigneeFilter, setAssigneeFilter] = useState([]);
   const [openDropdownId, setOpenDropdownId] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -301,11 +303,13 @@ const handleTableDropdown = (id) => {
         </div>
         <div className="w-5/6 p-4 bg-white rounded-lg shadow-md">
           <h2 className="text-xl font-normal mb-4">Tickets ({tickets.length})</h2>
-          <a  useNavigate={<TicketForm/>}>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded mb-4 duration-100 ease-in-out hover:bg-slate-700 hover:text-white">
-              Create Ticket
-            </button>
-          </a>
+         <button
+  onClick={() => navigate('/create-ticket')}
+  className="bg-blue-500 text-white py-2 px-4 rounded mb-4 duration-100 ease-in-out hover:bg-slate-700 hover:text-white"
+>
+  Create Ticket
+</button>
+
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-200">
               <thead>

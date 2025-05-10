@@ -8,20 +8,19 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./category.module.css";
 
-const CategoryForm = () => {
+const CategoryForm = ({ onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ categoryName: "", description: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Accessing environment variables
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpa2lzZWh0b2NodWt3dUBnbWFpbC5jb20iLCJpYXQiOjE3MjI3OTY3NDEsImV4cCI6MTcyMjk2OTU0MX0.wHHLjeakwbmyT08HehrDb63esMTh9UPg5nW0tdZlmyk";
+  const token = localStorage.getItem("token");
 
   const submitHandle = async () => {
     setLoading(true);
     setError(null);
-  
+
     try {
       const response = await axios.post(
         `${baseUrl}/api/admin/new-category`,
@@ -36,10 +35,7 @@ const CategoryForm = () => {
           },
         }
       );
-      console.log(token);
-      console.log(formData.categoryName);
-      console.log(formData.description);
-  
+
       if (response.data.responseCode === "005") {
         setShowModal(true);
         setFormData({ categoryName: "", description: "" });
@@ -48,33 +44,35 @@ const CategoryForm = () => {
       }
     } catch (error) {
       if (error.response) {
-        console.error("Error response status:", error.response.status);
-        console.error("Error response headers:", error.response.headers);
-  
-        if (error.response.status === 401) {
-          setError("Unauthorized access. Please check your credentials or login again.");
-        } else {
-          setError(`Error: ${error.response.data.message || 'An error occurred'}`);
-        }
+        setError(error.response.data.message || "An error occurred.");
       } else if (error.request) {
-        console.error("No response received:", error.request);
-        setError("No response received from server. Please try again.");
+        setError("No response received from server.");
       } else {
-        console.error("Error message:", error.message);
-        setError("An error occurred while sending the request. Please try again.");
+        setError("An unexpected error occurred.");
       }
-      console.error("Error config:", error.config);
     } finally {
       setLoading(false);
     }
-  };  
+  };
 
   return (
     <section className={styles.category}>
       <div className={styles.subContainer}>
-        {!showModal && (
+        {!showModal ? (
           <div>
-            <img src={closeIcon} className={styles.closeIcon} alt="Close" />
+            <img
+              src={closeIcon}
+              className={styles.closeIcon}
+              alt="Close"
+              onClick={onClose} // ✅ use the prop to close parent
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                cursor: 'pointer',
+                width: '20px'
+              }}
+            />
             <img src={logo} alt="Logo" />
             <h5 className={styles.formHeader}>Create New Category</h5>
             {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -82,22 +80,21 @@ const CategoryForm = () => {
               value={formData.categoryName}
               label="Category Name"
               placeholder="Category Name"
-              setValue={(data) => {
-                setFormData((prevData) => ({ ...prevData, categoryName: data }));
-              }}
+              setValue={(data) =>
+                setFormData((prev) => ({ ...prev, categoryName: data }))
+              }
             />
             <TextArea
               value={formData.description}
               label="Description"
               placeholder="Description"
-              setValue={(data) => {
-                setFormData((prevData) => ({ ...prevData, description: data }));
-              }}
+              setValue={(data) =>
+                setFormData((prev) => ({ ...prev, description: data }))
+              }
             />
             <Button onClick={submitHandle} disabled={loading} />
           </div>
-        )}
-        {showModal && (
+        ) : (
           <Modal closeModal={() => setShowModal(false)} />
         )}
       </div>

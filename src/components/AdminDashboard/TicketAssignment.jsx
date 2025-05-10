@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const TicketCard = ({ ticket }) => (
   <Paper
-    elevation={3}
+    elevation={2}
     sx={{
       p: 2,
       mb: 2,
@@ -22,7 +22,7 @@ const TicketCard = ({ ticket }) => (
   >
     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
       <Typography variant="h6" sx={{ fontSize: '1rem', color: '3c3c3c' }}>
-        Ticket #{ticket.id}
+        Tickets #{ticket.id}
       </Typography>
       <Typography variant="caption" sx={{ fontSize: '.7rem', color: '#afafaf' }}>
         {ticket.time}
