@@ -13,7 +13,7 @@ const DepartmentForm = () => {
   const [error, setError] = useState(null);
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-  const token = import.meta.env.VITE_API_TOKEN;
+const token = localStorage.getItem('token');
 
   const submitHandle = async () => {
     setLoading(true);
@@ -59,7 +59,12 @@ const DepartmentForm = () => {
           <div className="relative w-full max-w-[300px] bg-white rounded p-4">
             <div className="flex items-center justify-between mb-4">
               <img src={Profile} alt="Profile" />
-              <img src={closeIcon} alt="Close" className="cursor-pointer" />
+              <img
+                src={closeIcon}
+                alt="Close"
+                className="cursor-pointer"
+                onClick={() => window.history.back()} // Navigate back to the previous page
+              />
             </div>
 
             <h5 className="font-medium text-dark text-left mb-4">

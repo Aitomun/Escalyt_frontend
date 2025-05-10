@@ -11,7 +11,7 @@ function Icon() {
         // Fetch user details to get the name
         const fetchUserDetails = async () => {
             const baseUrl = import.meta.env.VITE_API_BASE_URL;
-            const token = import.meta.env.VITE_API_TOKEN;
+            const token = localStorage.getItem('authToken');
             const options = {
                 method: 'GET',
                 headers: {

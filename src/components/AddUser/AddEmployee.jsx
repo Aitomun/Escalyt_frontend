@@ -21,7 +21,7 @@ const AddEmployee = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [departments, setDepartments] = useState([]);
-  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZWVvZmZpY2lhbDAwMUBnbWFpbC5jb20iLCJpYXQiOjE3MjI5MzgxMTUsImV4cCI6MTcyMzExMDkxNX0.aEkS8A1Y11tG_6rF4fsBcn5JMw0UmKxgvAOUtdjPb94'; // Replace with your actual token or get it dynamically
+  const token = localStorage.getItem('token'); // Retrieve the token dynamically from local storage
 
   useEffect(() => {
     const fetchDepartments = async () => {
@@ -70,153 +70,164 @@ const AddEmployee = () => {
 
  
   return (
-  <div className={styles.container}>
-  <div className={styles.header}>
-    <img src={human} alt="Icon" className={styles.icon} />
-    <button className={styles.closeButton} onClick={() => setShowModal(false)}>
-      <img src={closeIcon} alt="Close" />
-    </button>
-  </div>
-  <h2 className={styles.title}>Create New User</h2>
-      
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label htmlFor="firstName">First Name
-          <span className={styles.asterisk}>*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="lastName">Last Name
-          <span className={styles.asterisk}>*</span>
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="email">Email
-          <span className={styles.asterisk}>*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="position">Position
-          <span className={styles.asterisk}>*</span>
-          </label>
-          <input
-            type="text"
-            id="position"
-            name="position"
-            placeholder="Position"
-            value={formData.position}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* <div className={styles.formGroup}>
-          <label htmlFor="category">Category
-          <span className={styles.asterisk}>*</span>
-          </label>
-          <input
-            type="text"
-            id="category"
-            name="category"
-            placeholder="Category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          />
-        </div> */}
-        
-        <div className={styles.formGroup}>
-          <div className={styles.labelAndButton}>
-            <label htmlFor="department">Department
-            <span className={styles.asterisk}>*</span>
-            </label>
-            <Link to="/create-department" className={styles.addButton}>
-              <img src={addIcon} alt="Add" />
-            </Link>
-          </div>
-          <div className={styles.selectWrapper}>
-            <select
-              id="department"
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select department</option>
-              {departments.map((dept) => (
-                <option key={dept.orgId} value={dept.departmentName}>{dept.departmentName}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-
-
-        <div className={styles.buttonGroup}>
-          <button type="submit" disabled={isLoading}>
-            Confirm
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <img src={human} alt="Icon" className={styles.icon} />
+          <button
+            className={styles.closeButton}
+            onClick={() => window.history.back()}
+          >
+            <img src={closeIcon} alt="Close" />
           </button>
         </div>
-      </form>
+        <h2 className={styles.title}>Create New User</h2>
 
-{showModal && (
-  <div className={styles.modalOverlay}>
-    <div className={styles.modal}>
-      <div className={styles.modalHeader}>
-      <img src={successIcon} alt="Success" className={styles.successIcon} />
-        <button className={styles.closeButton} onClick={() => setShowModal(false)}>
-          <img src={closeIcon} alt="Close" />
-        </button>
-      </div>
-      <div className={styles.modalBody}>
-        <h2>User Created Successfully</h2>
-        <p>{modalMessage}</p>
-      </div>
-      <button onClick={() => setShowModal(false)} className={styles.confirmButton}>Confirm</button>
-    </div>
-  </div>
-)}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.formGroup}>
+            <label htmlFor="firstName">
+              First Name
+              <span className={styles.asterisk}>*</span>
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-      {isLoading && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalLoading}>
-            <div className={styles.loading}>
-              <img src={loadingIcon} alt="Loading" className={styles.loadingIcon} />
-              <p>Loading...</p>
+          <div className={styles.formGroup}>
+            <label htmlFor="lastName">
+              Last Name
+              <span className={styles.asterisk}>*</span>
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="email">
+              Email
+              <span className={styles.asterisk}>*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="position">
+              Position
+              <span className={styles.asterisk}>*</span>
+            </label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              placeholder="Position"
+              value={formData.position}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <div className={styles.labelAndButton}>
+              <label htmlFor="department">
+                Department
+                <span className={styles.asterisk}>*</span>
+              </label>
+              <Link to="/create-department" className={styles.addButton}>
+                <img src={addIcon} alt="Add" />
+              </Link>
+            </div>
+            <div className={styles.selectWrapper}>
+              <select
+                id="department"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select department</option>
+                {departments.map((dept) => (
+                  <option key={dept.orgId} value={dept.departmentName}>
+                    {dept.departmentName}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-        </div>
-      )}
+
+          <div className={styles.buttonGroup}>
+            <button type="submit" disabled={isLoading}>
+              Confirm
+            </button>
+          </div>
+        </form>
+
+        {showModal && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modal}>
+              <div className={styles.modalHeader}>
+                <img
+                  src={successIcon}
+                  alt="Success"
+                  className={styles.successIcon}
+                />
+                <button
+                  className={styles.closeButton}
+                  onClick={() => window.history.back()}
+                >
+                  <img src={closeIcon} alt="Close" />
+                </button>
+              </div>
+              <div className={styles.modalBody}>
+                <h2>User Created Successfully</h2>
+                <p>{modalMessage}</p>
+              </div>
+              <button
+                onClick={() => window.history.back()}
+                className={styles.confirmButton}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        )}
+
+        {isLoading && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalLoading}>
+              <div className={styles.loading}>
+                <img
+                  src={loadingIcon}
+                  alt="Loading"
+                  className={styles.loadingIcon}
+                />
+                <p>Loading...</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

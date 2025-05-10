@@ -45,6 +45,8 @@ function App() {
 
           <Route path='/signup' element={<Signup />} />
           <Route path='/add-user' element={<AddEmployee />} />
+          <Route path="/admin/addEmployee" element={<AddEmployee />} />
+
 
           <Route path='/admin/dashboard' element={<AdminHomeDashboard />} />
           <Route path="/adminticketsdashboard" element={<AdminTicketsDashboard />} />

@@ -19,7 +19,6 @@ const formatDateDistance = (dateString) => {
 
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
-//const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYW1pZGVsZWdiZXRvbnlvbkBnbWFpbC5jb20iLCJpYXQiOjE3MjI3OTIxMDUsImV4cCI6MTcyMjk2NDkwNX0.7NTHOK1F5k2XlMAmHDSMFkKRKChbFimafD8JG18mYUI';
 
 const Mytickets = () => {
   const [tickets, setTickets] = useState([]);

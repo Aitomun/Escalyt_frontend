@@ -4,7 +4,6 @@ import Open from '../../assets/images/Openmsg.png'
 import Total from '../../assets/images/files.png'
 import Resolved from '../../assets/images/Tick.png'
 
-//const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYW1pZGVsZWdiZXRvbnlvbkBnbWFpbC5jb20iLCJpYXQiOjE3MjI3OTIxMDUsImV4cCI6MTcyMjk2NDkwNX0.7NTHOK1F5k2XlMAmHDSMFkKRKChbFimafD8JG18mYUI';
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const Counts = () => {

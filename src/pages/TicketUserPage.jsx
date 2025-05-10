@@ -20,7 +20,7 @@ import SectionView from '../components/userDashboardTicket/SectionViewUser';
 
 const TicketEmployeePage = () => {
     const { employeeId, ticketId } = useParams();
-    const token = import.meta.env.VITE_API_TOKEN;
+            const token = localStorage.getItem('authToken');
 
     return (
         <div className="container mx-auto mt-8">

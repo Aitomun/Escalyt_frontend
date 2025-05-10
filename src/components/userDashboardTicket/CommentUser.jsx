@@ -19,7 +19,7 @@ const CommentSection = () => {
   const [userInitials, setUserInitials] = useState(''); // State for storing user initials
 
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-  const token = import.meta.env.VITE_API_TOKEN;
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     // Fetch current user's details

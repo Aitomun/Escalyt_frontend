@@ -10,7 +10,7 @@ import AttachmentUser from './AttachmentUser';
 const SectionViewUser = () => {
     const navigate = useNavigate();
     const { ticketId } = useParams(); // Extract ticketId from route params
-    const token = import.meta.env.VITE_API_TOKEN; // Assuming token is stored in env variables or can be retrieved
+            const token = localStorage.getItem('authToken');
 
     useEffect(() => {
         // Function to check token validity by making a dummy API request

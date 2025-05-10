@@ -28,7 +28,10 @@ function Header() {
 
   return (
     <div>
+    
+
       <header className="bg-blue-50 py-2 border-1 relative z-50">
+        
         <nav className="bg-blue-50 py-2">
           <div className="container mx-auto px-4 flex justify-between items-center">
             <div className="flex items-center pl-6">
@@ -42,8 +45,19 @@ function Header() {
               <a href="#pages" className="text-lg hover:text-blue-600">Pages</a>
               <a href="#contact" className="text-lg hover:text-blue-600">Contact</a>
             </div>
-            <Link to="/signup"><button className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-md">Start Free Trial</button></Link>
-            
+           <div className="flex items-center space-x-2">
+  <Link to="/login">
+    <button className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-md">
+      Login
+    </button>
+  </Link>
+  <Link to="/signup">
+    <button className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-md">
+      Start Free Trial
+    </button>
+  </Link>
+</div>
+
             
             <button onClick={toggleMenu} className="md:hidden flex items-center px-3 py-2 border rounded text-blue-600 border-blue-600">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

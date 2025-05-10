@@ -7,7 +7,7 @@ function Form() {
     </form>
 );
   return (
-    <div>
+    <div >
       <form>
         <label>email</label>
         <input type='email'></input>

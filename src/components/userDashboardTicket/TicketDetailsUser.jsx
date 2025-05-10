@@ -8,7 +8,7 @@ const DetailsSection = () => {
     const [error, setError] = useState(null);
     const { ticketId } = useParams(); // Extract ticketId from route params
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-    const token = import.meta.env.VITE_API_TOKEN;
+    const token = localStorage.getItem('authToken');
     const navigate = useNavigate();
 
     // Fetch ticket details

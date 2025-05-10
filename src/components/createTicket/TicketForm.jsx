@@ -9,7 +9,7 @@ const URLS = {
   TICKET: (id) => `http://localhost:8080/api/tickets/create/${id}`,
 };
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb3lhbGlodW5tYUBnbWFpbC5jb20iLCJpYXQiOjE3MjI5NTg4NTAsImV4cCI6MTcyMzEzMTY1MH0.MNEvBdp1vdddwknAAxaPe_RQrH163I1n70MYgyJ87r4"; // Replace with actual token
+const token = localStorage.getItem("token"); // Retrieve token from local storage
 
 function TicketForm() {
   const [showModal, setShowModal] = useState(false);
